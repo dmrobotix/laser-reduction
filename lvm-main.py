@@ -6,7 +6,9 @@ from os.path import isfile, join
 import argparse
 
 
-parser = argparse.ArgumentParser(prog='python3 lvm-main.py', description='Reduce laser data. Any questions? Ask Margot: margot.paez@jpl.nasa.gov or mpz@ucsc.edu!')
+parser = argparse.ArgumentParser(prog='python3 lvm-main.py', description='Reduce laser data. Any questions? '
+                                                                         'Ask Margot: margot.paez@jpl.nasa.gov or '
+                                                                         'mpz@ucsc.edu!')
 parser.add_argument(type=int, dest='begin_pulse', help='the starting pulse number (count begins at 1)')
 parser.add_argument(type=int, dest='end_pulse', help='the last pulse to get data from')
 parser.add_argument(type=str, dest='location', help='the directory that contains the laser files, use full path!')
