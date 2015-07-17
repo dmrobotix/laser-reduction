@@ -57,7 +57,7 @@ class Reducer(object):
 
                 if self.__begin <= self.__pulse <= self.__end:
                     # split the line
-                    print("Integrating...\n")
+                    # print("Integrating...\n")
                     values = line.split()
 
                     # roh only wants them summed not truly integrated in the traditional sense
@@ -65,6 +65,12 @@ class Reducer(object):
                     self.__phot += float(values[2])
                     self.__curr += float(values[3])
                     self.__ttl += float(values[4])
+
+                    if self.__counter == 200:
+                        self.__ingvolt.append(self.__volt)
+                        self.__ingphot.append(self.__phot)
+                        self.__ingcurr.append(self.__curr)
+                        self.__ingttl.append(self.__ttl)
 
                 elif self.__pulse < self.__begin:
                     # don't do anything with the data, just keep count of the data/pulse
@@ -86,10 +92,6 @@ class Reducer(object):
                 if self.__counter == 200:
                     self.__counter = 0
                     self.__pulse += 1
-                    self.__ingvolt.append(self.__volt)
-                    self.__ingphot.append(self.__phot)
-                    self.__ingcurr.append(self.__curr)
-                    self.__ingttl.append(self.__ttl)
                     self.__volt = 0
                     self.__phot = 0
                     self.__curr = 0
@@ -104,8 +106,10 @@ class Reducer(object):
         pulsedist = (self.__end - self.__begin)
         t = []
 
-        for pulse in range(pulsedist+2):
+        for pulse in range(pulsedist+1):
             t.append(pulse*duration)
+
+        t = np.array(t)
 
         results = {"Voltage": self.__ingvolt,
                    "Photo Diode": self.__ingphot,
@@ -122,12 +126,14 @@ class Reducer(object):
             py.xlabel(parameter)
             py.title("Integrated %s Histogram" % parameter)
             py.savefig("results/%s/%s-hist.png" % (self.__directory, parameter))
+            py.clf()
 
-            py.plot(t, results[parameter])
+            py.plot(t, results[parameter],'o--')
             py.xlabel("Time (microsecs)")
             py.ylabel(parameter)
             py.title("Line Plot for Integrated %s" % parameter)
             py.savefig("results/%s/%s-line.png" % (self.__directory, parameter))
+            py.clf()
 
         print("Saved plots.\n")
         return True
