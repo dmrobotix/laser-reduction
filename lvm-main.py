@@ -27,6 +27,6 @@ for file in files:
         break
 
 if rd.plotter() is True:
-    print("All pulses complete. Please check your laser folder for plots and data.")
+    print("All pulses complete. Please check your laser folder for plots and data.\n")
 else:
-    print("The program was unable to complete. Please try again.")
+    print("The program was unable to complete. Please try again.\n")

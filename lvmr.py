@@ -116,9 +116,9 @@ class Reducer(object):
                    "Current": self.__ingcurr,
                    "TTL Output": self.__ingttl}
 
-        print("Dumping results dictionary\n")
-        print(results)
-        print("\n")
+        # print("Dumping results dictionary\n")
+        # print(results)
+        # print("\n")
         print("Making plots.\n")
 
         for parameter in results.keys():
