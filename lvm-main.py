@@ -1,4 +1,4 @@
-__author__ = 'margot'
+__author__ = 'margot paez'
 
 import lvmr
 import sys
