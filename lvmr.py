@@ -41,7 +41,6 @@ class Reducer(object):
         for line in fl:
             # look for the last line of the header
             if line.strip() == "***End_of_Header***":
-                print("Found the end of the header!\n")
                 break
 
         # skip the next line
@@ -124,14 +123,14 @@ class Reducer(object):
         for parameter in results.keys():
             py.hist(results[parameter], bins=165, log=True)
             py.xlabel(parameter)
-            py.title("Integrated %s Histogram" % parameter)
+            py.title("Integrated %s Histogram - Total Pulses: %s (%s-%s)" % (parameter, pulsedist+1, self.__begin, self.__end))
             py.savefig("results/%s/%s-hist.png" % (self.__directory, parameter))
             py.clf()
 
             py.plot(t, results[parameter],'o--')
             py.xlabel("Time (microsecs)")
             py.ylabel(parameter)
-            py.title("Line Plot for Integrated %s" % parameter)
+            py.title("Line Plot for Integrated %s - Total Pulses: %s (%s-%s)" % (parameter, pulsedist+1, self.__begin, self.__end))
             py.savefig("results/%s/%s-line.png" % (self.__directory, parameter))
             py.clf()
 
