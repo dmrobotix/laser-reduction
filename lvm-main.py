@@ -23,7 +23,7 @@ files = [f for f in listdir(mypath) if isfile(join(mypath, f))]
 rd = lvmr.Reducer(begin, end)
 
 for file in files:
-    if rd.integrate(file) is True:
+    if rd.integrate("%s/%s" % (mypath, file)) is True:
         break
 
 if rd.plotter() is True:
