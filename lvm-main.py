@@ -21,12 +21,12 @@ mypath = results.location
 
 files = [f for f in listdir(mypath) if isfile(join(mypath, f))]
 
-print(files)
-sys.exit()
-
 rd = lvmr.Reducer(begin, end)
 
 for file in files:
+    print(file)
+    type(file)
+    sys.exit()
     if rd.integrate("%s/%s" % (mypath, file)) is True:
         break
 
