@@ -44,6 +44,11 @@ class Reducer(object):
             if line.strip() == "***End_of_Header***":
                 break
 
+        for line in fl:
+            # look for the last line of the header
+            if line.strip() == "***End_of_Header***":
+                break
+
         # skip the next line
         fl.readline()
         print("Found the end of the header.\n")
