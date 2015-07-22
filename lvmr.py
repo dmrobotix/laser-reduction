@@ -46,7 +46,7 @@ class Reducer(object):
 
         # skip the next line
         fl.readline()
-        print("Found the end of the header. Reading data.")
+        print("Found the end of the header.\n")
 
         # continue reading the lines
         print("Reading data!\n")
@@ -60,6 +60,9 @@ class Reducer(object):
                     # split the line
                     # print("Integrating...\n")
                     values = line.split()
+
+                    if len(values) == 0:
+                        print("the isn't any data in this line.\n")
 
                     # roh only wants them summed not truly integrated in the traditional sense
                     self.__volt += float(values[1])
