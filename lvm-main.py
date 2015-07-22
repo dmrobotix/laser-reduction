@@ -25,7 +25,7 @@ rd = lvmr.Reducer(begin, end)
 
 for file in files:
     print(file)
-    type(file)
+    print(type(file))
     sys.exit()
     if rd.integrate("%s/%s" % (mypath, file)) is True:
         break
