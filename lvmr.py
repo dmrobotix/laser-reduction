@@ -36,6 +36,7 @@ class Reducer(object):
         """ Pulls in data from the file and integrates the column data """
 
         # open the file
+        print("Current pulse: %s\n" % self.__pulse)
         print("Opening file %s...\n" % filename)
         fl = open(filename, 'r')
         for line in fl:
@@ -45,6 +46,7 @@ class Reducer(object):
 
         # skip the next line
         fl.readline()
+        print("Found the end of the header. Reading data.")
 
         # continue reading the lines
         print("Reading data!\n")
@@ -55,7 +57,6 @@ class Reducer(object):
                 self.__counter += 1
 
                 if self.__begin <= self.__pulse <= self.__end:
-                    print("current pulse: %s" % self.__pulse)
                     # split the line
                     # print("Integrating...\n")
                     values = line.split()
