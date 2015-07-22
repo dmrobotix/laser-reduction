@@ -4,7 +4,6 @@ import lvmr
 from os import listdir
 from os.path import isfile, join
 import argparse
-import sys
 
 
 parser = argparse.ArgumentParser(prog='python3 lvm-main.py', description='Reduce laser data. Any questions? '
