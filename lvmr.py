@@ -36,7 +36,7 @@ class Reducer(object):
         """ Pulls in data from the file and integrates the column data """
 
         # open the file
-        print("Opening file...\n")
+        print("Opening file %s...\n") % filename
         fl = open(filename, 'r')
         for line in fl:
             # look for the last line of the header
