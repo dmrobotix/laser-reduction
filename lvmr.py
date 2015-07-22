@@ -61,8 +61,8 @@ class Reducer(object):
                     # print("Integrating...\n")
                     values = line.split()
 
-                    if len(values) == 0:
-                        print("the isn't any data in this line.\n")
+                    if self.__pulse == 205:
+                        print(values)
 
                     # roh only wants them summed not truly integrated in the traditional sense
                     self.__volt += float(values[1])
