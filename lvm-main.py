@@ -22,7 +22,7 @@ mypath = results.location
 # function for mapping taken from:
 # http://stackoverflow.com/questions/12093940/reading-files-in-a-particular-order-in-python
 numbers = re.compile(r'(\d+)')
-def numericalSort(value):
+def numericalsort(value):
     parts = numbers.split(value)
     parts[1::2] = map(int, parts[1::2])
     return parts
@@ -31,7 +31,7 @@ files = [f for f in listdir(mypath) if isfile(join(mypath, f))]
 
 rd = lvmr.Reducer(begin, end)
 
-for file in sorted(files, key=numericalSort):
+for file in sorted(files, key=numericalsort):
     path = join(mypath, file)
     if rd.integrate(path) is True:
         break
