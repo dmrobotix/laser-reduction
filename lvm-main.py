@@ -4,6 +4,7 @@ import lvmr
 from os import listdir
 from os.path import isfile, join
 import argparse
+import sys
 
 
 parser = argparse.ArgumentParser(prog='python3 lvm-main.py', description='Reduce laser data. Any questions? '
@@ -19,6 +20,9 @@ end = results.end_pulse
 mypath = results.location
 
 files = [f for f in listdir(mypath) if isfile(join(mypath, f))]
+
+print(files)
+sys.exit()
 
 rd = lvmr.Reducer(begin, end)
 
