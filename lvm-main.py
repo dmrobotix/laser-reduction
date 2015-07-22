@@ -22,11 +22,14 @@ mypath = results.location
 # function for mapping taken from:
 # http://stackoverflow.com/questions/12093940/reading-files-in-a-particular-order-in-python
 numbers = re.compile(r'(\d+)')
+
+
 def numericalsort(value):
     parts = numbers.split(value)
     parts[1::2] = map(int, parts[1::2])
     return parts
 
+# process files
 files = [f for f in listdir(mypath) if isfile(join(mypath, f))]
 
 rd = lvmr.Reducer(begin, end)
