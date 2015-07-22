@@ -24,9 +24,8 @@ files = [f for f in listdir(mypath) if isfile(join(mypath, f))]
 rd = lvmr.Reducer(begin, end)
 
 for file in files:
-    print("%s/%s" % (mypath, file))
-    sys.exit()
-    if rd.integrate("%s/%s" % (mypath, file)) is True:
+    path = join(mypath, file)
+    if rd.integrate(path) is True:
         break
 
 if rd.plotter() is True:
