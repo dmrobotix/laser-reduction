@@ -55,6 +55,7 @@ class Reducer(object):
                 self.__counter += 1
 
                 if self.__begin <= self.__pulse <= self.__end:
+                    print("current pulse: %s") % self.__pulse
                     # split the line
                     # print("Integrating...\n")
                     values = line.split()
