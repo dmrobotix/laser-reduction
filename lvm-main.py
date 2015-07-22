@@ -19,6 +19,8 @@ begin = results.begin_pulse
 end = results.end_pulse
 mypath = results.location
 
+# function for mapping taken from:
+# http://stackoverflow.com/questions/12093940/reading-files-in-a-particular-order-in-python
 numbers = re.compile(r'(\d+)')
 def numericalSort(value):
     parts = numbers.split(value)
