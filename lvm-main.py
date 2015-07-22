@@ -4,6 +4,7 @@ import lvmr
 from os import listdir
 from os.path import isfile, join
 import argparse
+import re
 
 
 parser = argparse.ArgumentParser(prog='python3 lvm-main.py', description='Reduce laser data. Any questions? '
@@ -18,11 +19,17 @@ begin = results.begin_pulse
 end = results.end_pulse
 mypath = results.location
 
+numbers = re.compile(r'(\d+)')
+def numericalSort(value):
+    parts = numbers.split(value)
+    parts[1::2] = map(int, parts[1::2])
+    return parts
+
 files = [f for f in listdir(mypath) if isfile(join(mypath, f))]
 
 rd = lvmr.Reducer(begin, end)
 
-for file in files:
+for file in sorted(files, key=numericalSort):
     path = join(mypath, file)
     if rd.integrate(path) is True:
         break
